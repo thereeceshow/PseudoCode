@@ -9,6 +9,7 @@ Doors must be closed before elevator can move.
 
 Doors must not close if they meet resistance to avoid loss of limb and lawsuits to our fine elevator company.
 
+***
 
 START
 
@@ -32,8 +33,6 @@ DEFINE Functions
             Elevator can't change floors
     myWay()
         Elevator only stops to pick up passengers if they are going same direction as elevator
-
-        If 
         
 Hitting a button to send the elevator to a specific floor will set setFloor to that floor
 
