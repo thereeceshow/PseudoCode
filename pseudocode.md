@@ -46,16 +46,31 @@ If goingUp = FALSE elevator needs to stop at all floors
 
 ---
 
-Var upStopAt []
-Var downStopAt []
+    Var upStopAt []
+    Var downStopAt []
 
-Function selectFloor
-    sets floor elevator needs to go to.  If it is Up, adds floor to upStopAt array, else downStopArray
+    Function selectFloor
+        sets floor elevator needs to go to.  If it is Up, adds floor to upStopAt array, else downStopArray
 
-    Use Logic inside elevator, on floor call button, to inputs will be available
+        Use Logic inside elevator, on floor call button, to inputs will be available
 
-Function Call Button Up
-    Input push CONSTfloorValue upStopAt []
+    Function callButtonUp
+        Input push CONSTfloorValue upStopAt []
 
-Function
-    Input push CONSTfloorValue downStopAt []
+    Function callButtonDown
+        Input push CONSTfloorValue downStopAt []
+
+    Function cabinButton
+        INPUT "BUTTON"
+            If BUTTON > currentFloor
+                Push BUTTON upStopAt[]
+            Push BUTTON downStopAt[]
+
+    Function moveElevatorUp
+        for loop if currentFloor =/ upStopAt [Any Value in Array]
+            function moveEleGear(1)
+
+    Function moveElevatorDown
+        for loop if currentFloor =/ downStopAt [Any Value in Array]
+        function moveEleGear(-1)
+            
