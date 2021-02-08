@@ -9,6 +9,7 @@ Doors must be closed before elevator can move.
 
 Doors must not close if they meet resistance to avoid loss of limb and lawsuits to our fine elevator company.
 
+***
 
 START
 
@@ -32,8 +33,6 @@ DEFINE Functions
             Elevator can't change floors
     myWay()
         Elevator only stops to pick up passengers if they are going same direction as elevator
-
-        If 
         
 Hitting a button to send the elevator to a specific floor will set setFloor to that floor
 
@@ -47,16 +46,37 @@ If goingUp = FALSE elevator needs to stop at all floors
 
 ---
 
-Var upStopAt []
-Var downStopAt []
+    Var upStopAt []
+    Var downStopAt []
 
-Function selectFloor
-    sets floor elevator needs to go to.  If it is Up, adds floor to upStopAt array, else downStopArray
+    Function selectFloor
+        sets floor elevator needs to go to.  If it is Up, adds floor to upStopAt array, else downStopArray
 
-    Use Logic inside elevator, on floor call button, to inputs will be available
+        Use Logic inside elevator, on floor call button, to inputs will be available
 
-Function Call Button Up
-    Input push CONSTfloorValue upStopAt []
+    Function callButtonUp
+        Input push CONSTfloorValue upStopAt []
 
-Function
-    Input push CONSTfloorValue downStopAt []
+    Function callButtonDown
+        Input push CONSTfloorValue downStopAt []
+
+    Function cabinButton
+        INPUT "BUTTON"
+            If BUTTON > currentFloor
+                Push BUTTON upStopAt[]
+            Else BUTTON < currentFloor
+                Push BUTTON downStopAt[]
+            Else
+                openDoors
+
+    Function moveElevatorUp
+        for loop if currentFloor =/ upStopAt [Any Value in Array]
+            function moveEleGear(1)
+
+    Function moveElevatorDown
+        for loop if currentFloor =/ downStopAt [Any Value in Array]
+        function moveEleGear(-1)
+
+    Function openDoors
+        Open the doors
+            
