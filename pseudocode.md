@@ -64,7 +64,10 @@ If goingUp = FALSE elevator needs to stop at all floors
         INPUT "BUTTON"
             If BUTTON > currentFloor
                 Push BUTTON upStopAt[]
-            Push BUTTON downStopAt[]
+            Else BUTTON < currentFloor
+                Push BUTTON downStopAt[]
+            Else
+                openDoors
 
     Function moveElevatorUp
         for loop if currentFloor =/ upStopAt [Any Value in Array]
@@ -73,4 +76,7 @@ If goingUp = FALSE elevator needs to stop at all floors
     Function moveElevatorDown
         for loop if currentFloor =/ downStopAt [Any Value in Array]
         function moveEleGear(-1)
+
+    Function openDoors
+        Open the doors
             
