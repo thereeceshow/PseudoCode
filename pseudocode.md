@@ -71,6 +71,11 @@ When the elevator has completed all its assignments, and has no other calls, it 
 
 Out of Operation Conditions
 
+The elevator can be placed out of commission for service, or in an emergency.
+
+* If they building's fire alarm is set, the elevator will return to lobby, open its doors, and lock down with the doors open.
+* The building's management can use a manual key to lock operation of the elevator on the main control panel.  In this case it can be shut down and locked on any floor.  The doors will stay open in this case too.
+
 ***
 
 START
@@ -88,8 +93,10 @@ DEFINE Functions
 
     callElevator()
         What to do when the elevator is called to a floor
+
     selectFloor()
         What to do when a floor is selected.  If selected inside elevator, floor choice is primary, if set from call button, it is secondary
+
     whileOpen()
         WHILE doorsClosed = FALSE
             Elevator can't change floors
@@ -103,18 +110,15 @@ Hitting a button to send the elevator to a specific floor will set setFloor to t
 
 If currentFloor is < setFloor, goingUp := True
 
-If the Doors are open, the elevator won't move. This is of critical safety, so needs to have multiple checks.
-
 If currentFloor = setFloor then the elevator needs to stop and the doors open.  doorClosed := False
 
 If goingUp = FALSE elevator needs to stop at all floors 
 
----
+    let upStopAt []
+    let downStopAt []
 
-    Var upStopAt []
-    Var downStopAt []
-
-    Function selectFloor
+    Function selectFloor() // INPUT from button push of either main CP of floor CP
+    
         sets floor elevator needs to go to.  If it is Up, adds floor to upStopAt array, else downStopArray
 
         Use Logic inside elevator, on floor call button, to inputs will be available
@@ -155,5 +159,8 @@ If goingUp = FALSE elevator needs to stop at all floors
     Function openDoors
         Open the doors
 
-    
+
+END
+
+***
             
